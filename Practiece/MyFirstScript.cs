@@ -12,8 +12,8 @@ class MyFirstScript : MonoBehaviour
 
         int myFirstVariable;
         myFirstVariable = 9;
-
         Debug.Log(myFirstVariable);
+
 
         int aaa = 456;
 
