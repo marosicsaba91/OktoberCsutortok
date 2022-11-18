@@ -3,14 +3,19 @@ using UnityEngine;
 class MathFunctions : MonoBehaviour
 {
     [SerializeField] int number;
+    [SerializeField] int exponent;
 
     [SerializeField] int abs;
     [SerializeField] int sign;
+    [SerializeField] float power;
 
     void OnValidate()
     {
         abs = AbsoluteValue(number);
         sign = (int) Sign(number);
+
+        power = Power(number, exponent);
+        float other = Power(5, 12);
     }
 
     int AbsoluteValue(int num) 
@@ -69,5 +74,41 @@ class MathFunctions : MonoBehaviour
         {
             return Ceil(num);
         }
+    }
+
+    float Power(float baseNum, int exponent) 
+    {
+        float result = 1;
+        for (int i = 0; i < exponent; i++)
+        {
+            result *= baseNum;
+        }
+        return result;
+    }
+
+    float Clamp(float number, float min, float max) 
+    {
+        if (number > max)
+        {
+            return max;
+        }
+        else if (number < min)
+        {
+            return min;
+        }
+        else 
+        {
+            return number;        
+        }
+    }
+
+    float Clamp01(float number) 
+    {
+        return Clamp(number, 0, 1);
+    }
+
+    Vector3 DirectionVec(Vector3 start, Vector3 end) 
+    {
+        return (end - start).normalized;
     }
 }
